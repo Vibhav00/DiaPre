@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <!--From https://codepen.io/frytyler/pen/EGdtg-->
+  <head>
+    <meta charset="UTF-8" />
+    <title>ML API</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Pacifico"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Arimo"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Hind:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      h2 {
+        text-align: center;
+      }
+      h1 {
+        border-top: 2px rgb(0, 217, 255) solid;
+        text-align: center;
+        color: rgb(93, 189, 241);
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+      }
+      input {
+        width: 20rem;
+        height: 2rem;
+        text-align: center;
+        color: rgb(235, 3, 3);
+        background-color: aquamarine;
+        border-top-left-radius: 10px;
+        border-end-end-radius: 10px;
+        border: red 2px solid;
+        box-shadow: 2px 2px 5px green;
+        transition: all 0.5s;
+      }
+      input:hover {
+        transform: scale(1.1);
+        transition: all 0.5s;
+        background-color: pink;
+      }
+      button {
+        width: 20rem;
+        height: 3rem;
+        color: rgb(65, 65, 64);
+        background-color: rgb(93, 189, 241);
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="login">
+      <!-- Main Input For Receiving Query to our ML -->
+      <form action="{{ url_for('predict')}}" method="post">
+        <h1>Predict Diabetes</h1>
+        <input
+          type="text"
+          name="pregnancies"
+          placeholder="pregnancies"
+          required="required"
+        />
+        <input
+          type="text"
+          name="Glucose"
+          placeholder="Glucose"
+          required="required"
+        />
+        <input
+          type="text"
+          name="BloodPressure"
+          placeholder="BloodPressure"
+          required="required"
+        />
+        <input
+          type="text"
+          name="SkinThickness"
+          placeholder="SkinThickness"
+          required="required"
+        />
+        <input
+          type="text"
+          name="Insulin"
+          placeholder="Insulin"
+          required="required"
+        />
+        <input type="text" name="BMI" placeholder="BMI" required="required" />
+
+        <input
+          type="text"
+          name="DiabetesPedigreeFunction"
+          placeholder="DiabetesPedigreeFunction"
+          required="required"
+        />
+        <input type="text" name="Age" placeholder="Age" required="required" />
+
+        <button
+          class="sub"
+          type="submit"
+          class="btn btn-primary btn-block btn-large"
+        >
+          Predict
+        </button>
+      </form>
+
+      <br />
+      <br />
+      <h2>{{ prediction_text }}</h2>
+    </div>
+    <script>
+      // const btn = document.querySelector('.sub')
+      // btn.addEventListener('click', (ele) => {
+      //   // console.log(ele.text)
+      // })
+    </script>
+  </body>
+</html>
